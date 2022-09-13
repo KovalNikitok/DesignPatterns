@@ -4,6 +4,8 @@ using System;
 using System.Collections.Generic;
 using DesignPatterns.Classes.AbstractFactory;
 using DesignPatterns.Classes.Singleton;
+using DesignPatterns.Classes.Prototype;
+using DesignPatterns.Classes.Builder;
 
 namespace DesignPatterns
 {
@@ -11,6 +13,7 @@ namespace DesignPatterns
     {
         static void Main()
         {
+            Console.WriteLine("Creational patterns:");
             #region Creational patterns
             #region Factory method pattern
             IProductFactory factoryBanana = new BananaFactory();
@@ -49,12 +52,33 @@ namespace DesignPatterns
             #endregion
             Console.WriteLine();
             #region Prototype
+            IPen penPrototype = new RoundedPen(System.Drawing.Color.AliceBlue, true);
+            penPrototype.GetColor();
+            IPen penPrototype2 = penPrototype.Clone();
+            penPrototype2.GetColor();
+            #endregion
+            Console.WriteLine();
+            #region Builder
+            BreadBuilder wheatBuilder = new WheatBuilder();
+            BreadBuilder ryeBuilder = new RyeBreadBuilder();
+            Baker baker = new Baker();
 
+            Console.WriteLine(baker.Bake(wheatBuilder).ToString());
+            Console.WriteLine(baker.Bake(ryeBuilder).ToString());
+            Console.WriteLine(baker.Bake(wheatBuilder).ToString());
+            #endregion
+            Console.WriteLine();
+            #endregion
+            Console.WriteLine("Behavioral patterns:");
+            #region Behavioral patterns
+            #region Strategy
 
 
             #endregion
             Console.WriteLine();
             #endregion
+            Console.WriteLine();
+            
         }
     }
 }
