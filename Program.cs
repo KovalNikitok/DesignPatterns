@@ -6,6 +6,7 @@ using DesignPatterns.Classes.AbstractFactory;
 using DesignPatterns.Classes.Singleton;
 using DesignPatterns.Classes.Prototype;
 using DesignPatterns.Classes.Builder;
+using DesignPatterns.Classes.BehavioralPatterns.Strategy;
 
 namespace DesignPatterns
 {
@@ -72,7 +73,10 @@ namespace DesignPatterns
             Console.WriteLine("Behavioral patterns:");
             #region Behavioral patterns
             #region Strategy
-
+            Dancer dancer = new Dancer("Nick", new BreakDancing());
+            dancer.Dancing();
+            dancer.Dance = new Ballet();
+            dancer.Dancing();
 
             #endregion
             Console.WriteLine();
