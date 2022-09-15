@@ -7,6 +7,7 @@ using DesignPatterns.Classes.Singleton;
 using DesignPatterns.Classes.Prototype;
 using DesignPatterns.Classes.Builder;
 using DesignPatterns.Classes.BehavioralPatterns.Strategy;
+using DesignPatterns.Classes.BehavioralPatterns.Observer;
 
 namespace DesignPatterns
 {
@@ -77,6 +78,21 @@ namespace DesignPatterns
             dancer.Dancing();
             dancer.Dance = new Ballet();
             dancer.Dancing();
+            #endregion
+            Console.WriteLine();
+            #region Observer
+            IObservable stock = new Stock();
+            IObserver bank = new Bank();
+            IObserver broker = new Broker();
+            stock.AddObserver(bank);
+            stock.AddObserver(broker);
+
+            ((Stock)stock).SetStockPair();
+            stock.NotifyObservers();
+            Console.WriteLine();
+
+            ((Stock)stock).SetStockPair();
+            stock.NotifyObservers();
 
             #endregion
             Console.WriteLine();
