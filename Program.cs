@@ -93,6 +93,9 @@ namespace DesignPatterns
 
             ((Stock)stock).SetStockPair();
             stock.NotifyObservers();
+            #endregion
+            Console.WriteLine();
+            #region Command
 
             #endregion
             Console.WriteLine();
