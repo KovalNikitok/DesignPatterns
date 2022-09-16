@@ -9,6 +9,8 @@ using DesignPatterns.Classes.Builder;
 using DesignPatterns.Classes.BehavioralPatterns.Strategy;
 using DesignPatterns.Classes.BehavioralPatterns.Observer;
 using DesignPatterns.Classes.BehavioralPatterns.Command;
+using DesignPatterns.Classes.BehavioralPatterns.TemplateMethod;
+using DesignPatterns.Classes.BehavioralPatterns.Iterator;
 
 namespace DesignPatterns
 {
@@ -119,6 +121,29 @@ namespace DesignPatterns
             commandManager.SetCommand(new ElectricalGarageDoorCommand(electricalGarageDoor));
             commandManager.RunCommand();
             commandManager.DropCommand();
+            Console.WriteLine();
+            #endregion
+            #region Template Method
+            School school = new School();
+            University university = new University();
+
+            school.Learn();
+            Console.WriteLine();
+            university.Learn();
+
+            Console.WriteLine();
+            #endregion
+            #region Iterator
+            Person[] persons = new Person[3]
+            {
+                new Person("Petya", "Ryazanov", 15),
+                new Person("Kolya", "Potapov", 25),
+                new Person("Alina", "Gruzdeva", 30)
+            };
+
+            PersonBookReader personBookReader = new PersonBookReader(persons);
+            personBookReader.ReadPersonBook();
+
             Console.WriteLine();
             #endregion
             #endregion
