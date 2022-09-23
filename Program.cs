@@ -11,6 +11,7 @@ using DesignPatterns.Classes.BehavioralPatterns.Observer;
 using DesignPatterns.Classes.BehavioralPatterns.Command;
 using DesignPatterns.Classes.BehavioralPatterns.TemplateMethod;
 using DesignPatterns.Classes.BehavioralPatterns.Iterator;
+using DesignPatterns.Classes.BehavioralPatterns.State;
 
 namespace DesignPatterns
 {
@@ -143,6 +144,15 @@ namespace DesignPatterns
 
             PersonBookReader personBookReader = new PersonBookReader(persons);
             personBookReader.ReadPersonBook();
+
+            Console.WriteLine();
+            #endregion
+            #region State
+            Nurition nurition = new Nurition();
+            nurition.Feed();
+            nurition.Feed();
+            nurition.Feed();
+            nurition.Feed();
 
             Console.WriteLine();
             #endregion
