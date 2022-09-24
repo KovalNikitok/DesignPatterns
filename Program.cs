@@ -12,6 +12,7 @@ using DesignPatterns.Classes.BehavioralPatterns.Command;
 using DesignPatterns.Classes.BehavioralPatterns.TemplateMethod;
 using DesignPatterns.Classes.BehavioralPatterns.Iterator;
 using DesignPatterns.Classes.BehavioralPatterns.State;
+using DesignPatterns.Classes.BehavioralPatterns.ChainOfResponsibility;
 
 namespace DesignPatterns
 {
@@ -153,6 +154,23 @@ namespace DesignPatterns
             nurition.Feed();
             nurition.Feed();
             nurition.Feed();
+
+            Console.WriteLine();
+            #endregion
+            #region Chain of Respponsibility
+            IElectricScuterRental xiaomiElectricScuterRental = new XiaomiElectricScuterRent();
+            IElectricScuterRental kugooElectricScuterRental = new KugooElectricScuterRent();
+            IElectricScuterRental borkElectricScuterRental = new BorkElectricScuterRent();
+
+            xiaomiElectricScuterRental.NextChain = kugooElectricScuterRental;
+            kugooElectricScuterRental.NextChain = borkElectricScuterRental;
+            ScuterType scuter = ScuterType.Kugoo;
+            Console.WriteLine($"Попытка получить в прокате электроскутер {scuter}");
+            xiaomiElectricScuterRental.RentElectricScuter(scuter);
+
+            scuter = ScuterType.Xiaomi;
+            Console.WriteLine($"Попытка получить в прокате электроскутер {scuter}");
+            xiaomiElectricScuterRental.RentElectricScuter(scuter);
 
             Console.WriteLine();
             #endregion
