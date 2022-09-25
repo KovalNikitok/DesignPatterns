@@ -14,6 +14,7 @@ using DesignPatterns.Classes.BehavioralPatterns.Iterator;
 using DesignPatterns.Classes.BehavioralPatterns.State;
 using DesignPatterns.Classes.BehavioralPatterns.ChainOfResponsibility;
 using DesignPatterns.Classes.BehavioralPatterns.Interpreter;
+using DesignPatterns.Classes.BehavioralPatterns.Mediator;
 
 namespace DesignPatterns
 {
@@ -195,6 +196,19 @@ namespace DesignPatterns
             Console.WriteLine();
             #endregion
             #region Mediator
+            ManagerMediator mediator = new ManagerMediator();
+
+            IColleague managerColleague = new ManagerColleague(mediator);
+            IColleague commodityColleague = new CommodityExpertColleague(mediator);
+            IColleague cashierColleague = new CashierColleague(mediator);
+
+            mediator.ManagerColleague = managerColleague;
+            mediator.CommodityExpertColleague = commodityColleague;
+            mediator.CashierColleague = cashierColleague;
+
+            managerColleague.Send("Update products at shop!");
+            commodityColleague.Send("Sell updated products!");
+            cashierColleague.Send("All products were sold!");
 
             Console.WriteLine();
             #endregion
