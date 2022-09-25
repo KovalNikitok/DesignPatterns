@@ -13,6 +13,7 @@ using DesignPatterns.Classes.BehavioralPatterns.TemplateMethod;
 using DesignPatterns.Classes.BehavioralPatterns.Iterator;
 using DesignPatterns.Classes.BehavioralPatterns.State;
 using DesignPatterns.Classes.BehavioralPatterns.ChainOfResponsibility;
+using DesignPatterns.Classes.BehavioralPatterns.Interpreter;
 
 namespace DesignPatterns
 {
@@ -171,6 +172,29 @@ namespace DesignPatterns
             scuter = ScuterType.Xiaomi;
             Console.WriteLine($"Попытка получить в прокате электроскутер {scuter}");
             xiaomiElectricScuterRental.RentElectricScuter(scuter);
+
+            Console.WriteLine();
+            #endregion
+            #region Interpreter
+            Context context = new Context();
+            context.SetVariable("X", 16);
+            context.SetVariable("Y", 12);
+            context.SetVariable("Z", 4);
+            context.SetVariable("M", 3);
+
+            IAbstractExpression expression =
+                new MultiplicationExpression(
+                    new SubstractExpression(new NumberExpression("X"), new NumberExpression("Y")),
+                    new AddExpression(new NumberExpression("Z"), new NumberExpression("M"))
+                );
+
+
+            int result = expression.Interpret(context);
+            Console.WriteLine($"Result of interpreter MZYX+-* is: {result}");
+
+            Console.WriteLine();
+            #endregion
+            #region Mediator
 
             Console.WriteLine();
             #endregion
