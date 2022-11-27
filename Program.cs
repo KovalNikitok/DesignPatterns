@@ -15,6 +15,7 @@ using DesignPatterns.Classes.BehavioralPatterns.State;
 using DesignPatterns.Classes.BehavioralPatterns.ChainOfResponsibility;
 using DesignPatterns.Classes.BehavioralPatterns.Interpreter;
 using DesignPatterns.Classes.BehavioralPatterns.Mediator;
+using DesignPatterns.Classes.BehavioralPatterns.Visitor;
 
 namespace DesignPatterns
 {
@@ -209,6 +210,27 @@ namespace DesignPatterns
             managerColleague.Send("Update products at shop!");
             commodityColleague.Send("Sell updated products!");
             cashierColleague.Send("All products were sold!");
+
+            Console.WriteLine();
+            #endregion
+            #region Visitor
+            var objectStructure = new ObjectStructureForVisitor();
+
+            var physicalEntitySomeCompany = new PhysicalEntity("OOO SomeCompany", "1234567890");
+            var physicalEntityOtherCompany = new PhysicalEntity("OOO OtherCompany", "0987654321");
+
+            var legalEntityAlexey = new LegalEntity("Alexey Galacticovich", "6543109876", "1 (234) 567 - 89 - 01");
+
+            objectStructure.Add(physicalEntitySomeCompany);
+            objectStructure.Add(physicalEntityOtherCompany);
+            objectStructure.Add(legalEntityAlexey);
+
+
+            objectStructure.AcceptVisitor(new SendInformationVisitor());
+
+            objectStructure.Remove(physicalEntityOtherCompany);
+
+            objectStructure.AcceptVisitor(new AlgorithmForAccountsVisitor());
 
             Console.WriteLine();
             #endregion
